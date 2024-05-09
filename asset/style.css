@@ -19,17 +19,45 @@
   justify-content: space-between;
   width: 100%;
   padding: 5px 0;
+  height: 50px;
+  align-items: center;
+  font-size: 30px;
+}
+.container .header .back {
+  color: white;
+  text-decoration: none;
+  padding-left: 20px;
+}
+.container .header .edit a {
+  color: white;
+  text-decoration: none;
+  padding-right: 20px;
 }
 .container .header p {
-  font-size: 20px;
   padding-left: 10px;
 }
 .container .header .item {
-  font-size: 24px;
   padding-right: 10px;
 }
 .container .header .item i {
   margin: 0 10px;
+}
+.container .header-category {
+  padding-top: 20px;
+  background-color: #3aafff;
+  display: flex;
+  width: 100%;
+  font-size: 24px;
+  text-align: center;
+}
+.container .header-category a {
+  color: white;
+  text-decoration: none;
+  width: 33.3333333333%;
+  padding-bottom: 5px;
+}
+.container .header-category .selected {
+  border-bottom: 4px solid white;
 }
 .container .footer {
   padding-top: 10px;
