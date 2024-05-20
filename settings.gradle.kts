@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "NMCNPM_Nhom12_Thu4_Ca2"
+rootProject.name = "My Application"
 include(":app")
+ 
