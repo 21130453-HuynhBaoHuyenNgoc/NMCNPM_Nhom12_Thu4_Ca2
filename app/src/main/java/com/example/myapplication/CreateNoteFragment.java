@@ -108,7 +108,7 @@ public class CreateNoteFragment extends Fragment {
         values.put(DatabaseHelper.COLUMN_DESCRIPTION, description);
         values.put(DatabaseHelper.COLUMN_DATE, date);
 
-        long newRowId = db.insert(DatabaseHelper.TABLE_NAME, null, values);
+        long newRowId = db.insert(DatabaseHelper.TABLE_CREATE_NOTE, null, values);
         if (newRowId == -1) {
             Toast.makeText(getContext(), "Lỗi khi lưu giao dịch", Toast.LENGTH_SHORT).show();
         } else {

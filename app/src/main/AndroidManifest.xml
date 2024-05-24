@@ -15,9 +15,6 @@
         <activity
             android:name=".CustomItemSpinner"
             android:exported="false" />
-        <!-- <activity -->
-        <!-- android:name=".FooterActivity" -->
-        <!-- android:exported="false" /> -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -28,10 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".CreateNote"
-            android:exported="true"
-            android:theme="@style/Theme.MyApplication"></activity>
     </application>
 
 </manifest>
