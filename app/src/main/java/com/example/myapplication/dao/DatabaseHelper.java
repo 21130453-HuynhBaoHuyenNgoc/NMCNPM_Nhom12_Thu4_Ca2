@@ -5,24 +5,24 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "transactions.db";
+    private static final String DATABASE_NAME = "revenue_expenditure_management.db";
     private static final int DATABASE_VERSION = 1;
-    public static final String TABLE_NAME = "transactions";
+    public static final String TABLE_NAME = "create_new_note";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_AMOUNT = "amount";
+    public static final String COLUMN_TYPE = "type";
+    public static final String COLUMN_CATEGORY = "category";
     public static final String COLUMN_DESCRIPTION = "description";
     public static final String COLUMN_DATE = "date";
-    public static final String COLUMN_CATEGORY = "category";
-    public static final String COLUMN_TYPE = "type";
 
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_AMOUNT + " REAL, " +
-                    COLUMN_DESCRIPTION + " TEXT, " +
-                    COLUMN_DATE + " TEXT, " +
+                    COLUMN_TYPE + " TEXT," +
                     COLUMN_CATEGORY + " TEXT, " +
-                    COLUMN_TYPE + " TEXT" + ")";
+                    COLUMN_DESCRIPTION + " TEXT, " +
+                    COLUMN_DATE + " TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

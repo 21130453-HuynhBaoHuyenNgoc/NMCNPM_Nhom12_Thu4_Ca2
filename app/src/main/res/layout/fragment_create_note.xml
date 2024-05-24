@@ -34,14 +34,14 @@
                 android:id="@+id/spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:popupBackground="@color/gray"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_gravity="center"
+                android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_centerInParent="true"/>
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:popupBackground="@color/gray"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
     </LinearLayout>
@@ -161,7 +161,7 @@
     </LinearLayout>
     <Button
         android:layout_marginTop="20dp"
-        android:id="@+id/btnAddTransaction"
+        android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lưu"
