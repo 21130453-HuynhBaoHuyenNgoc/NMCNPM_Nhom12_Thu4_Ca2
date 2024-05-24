@@ -16,6 +16,9 @@
             android:name=".CustomItemSpinner"
             android:exported="false" />
         <activity
+            android:name=".ReportchartMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplication">
