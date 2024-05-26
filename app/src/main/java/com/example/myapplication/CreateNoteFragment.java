@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import static java.security.AccessController.getContext;
-
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -36,7 +34,7 @@ import java.util.Locale;
  */
 public class CreateNoteFragment extends Fragment {
     private EditText etAmount, etDescription;
-    private Button btnSelectDate, btnSave, tvSelectCategory;
+    private Button btnSelectDate, btnSave, btnSelectCategory;
     private TextView tvDate;
     private ImageButton btnBack;
     private Spinner spin;
@@ -54,7 +52,7 @@ public class CreateNoteFragment extends Fragment {
         etDescription = view.findViewById(R.id.etDescription);
         btnSelectDate = view.findViewById(R.id.btnSelectDate);
         btnSave = view.findViewById(R.id.btnSave);
-        tvSelectCategory = view.findViewById(R.id.tvSelectCategory);
+        btnSelectCategory = view.findViewById(R.id.btnSelectCategory);
         tvDate = view.findViewById(R.id.tvDate);
         btnBack = view.findViewById(R.id.btn_back);
         spin = view.findViewById(R.id.spinner);
@@ -67,17 +65,20 @@ public class CreateNoteFragment extends Fragment {
         // Thiết lập ArrayAdapter cho Spinner
         spin.setAdapter(adapter);
 
-        // Đặt sự kiện cho các nút bấm
         btnBack.setOnClickListener(v -> getActivity().onBackPressed());
+        // 4. Hiển thị hộp thoại chọn ngày khi nhấn
         btnSelectDate.setOnClickListener(v -> showDatePickerDialog());
+        // 7. Xử lý khi nhấn nút lưu
         btnSave.setOnClickListener(v -> createNewNote());
-//        tvSelectCategory.setOnClickListener(v -> showCategorySelectionDialog());
+        // 6. Xử lý nhấn chọn hạng mục
+//        btnSelectCategory.setOnClickListener(v -> showCategorySelectionDialog());
 
-        // Đặt ngày hiện tại cho tvDate
+        // 5. Đặt ngày hiện tại cho tvDate
         tvDate.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
 
         return view;
     }
+    // 4. Phương thức hiển thị hộp thoại chọn ngày
     private void showDatePickerDialog() {
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
@@ -89,17 +90,25 @@ public class CreateNoteFragment extends Fragment {
                 year, month, day);
         datePickerDialog.show();
     }
-
+    // 8. Phương thức tạo ghi chú mới
     private void createNewNote() {
+        // Lấy giá trị từ các trường nhập liệu
         String amount = etAmount.getText().toString().trim();
         String description = etDescription.getText().toString().trim();
         String date = tvDate.getText().toString().trim();
         String type = spin.getSelectedItem().toString().equals("Thu tiền") ? "chi tiền" : "thu";
-
+        // 9. Kiểm tra thông tin
         if(TextUtils.isEmpty(amount)){
-            Toast.makeText(getContext(), "Vui lòng nhập số tiền", Toast.LENGTH_SHORT).show();
-            return;
+            //10.1 Hiển thị thông báo "Vui lòng nhập lại"
+            Toast.makeText(getContext(), "Vui lòng nhập số tiền", Toast.LENGTH_SHORT).show(); // Kiểm tra người dùng nhập số tiền chưa
+            return; // Dừng lại nếu trường số tiền trống
         }
+//        if (spin.getSelectedItemPosition() == 0) { // Kiểm tra xem người dùng đã chọn hạng mục chưa
+              //10.1 Hiển thị thông báo "Vui lòng nhập lại"
+//            Toast.makeText(getContext(), "Vui lòng chọn hạng mục", Toast.LENGTH_SHORT).show();
+//            return; // Dừng lại nếu chưa chọn hạng mục
+//        }
+        // 10. Mở kết nối cơ sở dữ liệu để ghi dữ liệu
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_AMOUNT, Double.parseDouble(amount));
@@ -117,9 +126,10 @@ public class CreateNoteFragment extends Fragment {
             Log.d("CreateNoteFragment", "Loại: " + type);
             Log.d("CreateNoteFragment", "Mô tả: " + description);
             Log.d("CreateNoteFragment", "Ngày: " + date);
+            // 11. Hiển thị thông báo "Lưu thành công"
             Toast.makeText(getContext(), "Lưu thành công", Toast.LENGTH_SHORT).show();
-            etAmount.setText("");
-            etDescription.setText("");
+            etAmount.setText("");  // Xóa trường số tiền
+            etDescription.setText(""); // Xóa trường chú thích
 
             // Đặt lại giá trị mặc định cho ngày và loại
             tvDate.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
