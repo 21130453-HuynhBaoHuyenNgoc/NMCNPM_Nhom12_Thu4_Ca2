@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
+import android.database.sqlite.SQLiteDatabase;
+import com.example.myapplication.dao.DatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
@@ -25,11 +27,15 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     CreateNoteFragment createNoteFragment;
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Tạo cơ sở dữ liệu
+        dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         createNoteFragment = new CreateNoteFragment();
 
@@ -43,6 +49,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-//        bottomNavigationView.setSelectedItemId(R.id.menu_chat);
     }
 }
