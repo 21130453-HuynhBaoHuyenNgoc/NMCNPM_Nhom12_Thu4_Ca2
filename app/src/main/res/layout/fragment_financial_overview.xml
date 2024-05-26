@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutbarchart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,9 +17,108 @@
         android:background="@color/blue"
         android:textColor="@color/white"/>
 
+    <!-- Thoi gian bat dau-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
+        <EditText
+            android:id="@+id/edit_rep_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Ngày bắt đầu"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+            android:text=""/>
+       <Button
+           android:id="@+id/btt_rep_start"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:background="@drawable/square_shape"
+           app:backgroundTint="@null"
+           android:textSize="20dp"
+           android:layout_marginLeft="45dp"
+           android:layout_marginRight="25dp"
+           android:text="Chọn ngày"/>
+    </LinearLayout>
 
+    <!-- Thoi gian ket thuc-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp">
 
+        <EditText
+            android:id="@+id/edit_rep_end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Ngày kết thúc"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+            android:text=""/>
+        <Button
+            android:id="@+id/btt_rep_end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square_shape"
+            app:backgroundTint="@null"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="25dp"
+            android:textSize="20dp"
+            android:text="Chọn ngày"/>
+    </LinearLayout>
 
+    <!-- Tong tien thu -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="90dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng thu"
+            android:textSize="40dp"
+            android:layout_marginLeft="25dp"/>
+        <EditText
+            android:id="@+id/edit_tienthu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="vnd"
+            android:textSize="40dp"
+            android:layout_marginLeft="40dp"
+            android:text=""/>
+    </LinearLayout>
+
+    <!-- Tong tien chi -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng chi"
+            android:textSize="40dp"
+            android:layout_marginLeft="25dp"/>
+        <EditText
+            android:id="@+id/edit_tienchi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="vnd"
+            android:textSize="40dp"
+            android:layout_marginLeft="40dp"
+            android:text=""/>
+    </LinearLayout>
 
 </LinearLayout>
