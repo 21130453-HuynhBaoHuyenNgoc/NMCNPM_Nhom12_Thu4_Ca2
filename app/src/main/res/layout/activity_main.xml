@@ -26,5 +26,8 @@
         android:layout_alignParentBottom="true"
         android:background="?attr/selectableItemBackgroundBorderless"
         app:menu="@menu/menu_main" />
-
+    <FrameLayout
+        android:id="@+id/fragment_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

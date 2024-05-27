@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.myapplication.dao.DatabaseHelper;
 
@@ -25,18 +26,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CreateNoteFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+///**
+// * A simple {@link Fragment} subclass.
+// * Use the {@link CreateNoteFragment#newInstance} factory method to
+// * create an instance of this fragment.
+// */
 public class CreateNoteFragment extends Fragment {
     private EditText etAmount, etDescription;
     private Button btnSelectDate, btnSave, btnSelectCategory;
     private TextView tvDate;
     private ImageButton btnBack;
     private Spinner spin;
-    String[] items = { "Thu tiền", "Chi tiền" };
+    String[] items = {"Thu tiền", "Chi tiền"};
     private DatabaseHelper dbHelper;
 
 
@@ -69,13 +70,22 @@ public class CreateNoteFragment extends Fragment {
         // 7. Xử lý khi nhấn nút lưu
         btnSave.setOnClickListener(v -> createNewNote());
         // 6. Xử lý nhấn chọn hạng mục
-//        btnSelectCategory.setOnClickListener(v -> showCategorySelectionDialog());
+        btnSelectCategory.setOnClickListener(v -> showCategorySelectionDialog());
 
         // 5. Đặt ngày hiện tại cho tvDate
         tvDate.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
 
         return view;
     }
+
+    private void showCategorySelectionDialog() {
+        CategoryFragment categoryFragment = new CategoryFragment();
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_category, categoryFragment);
+        transaction.addToBackStack("Category");
+        transaction.commit();
+    }
+
     // 4. Phương thức hiển thị hộp thoại chọn ngày
     private void showDatePickerDialog() {
         final Calendar c = Calendar.getInstance();
@@ -88,6 +98,7 @@ public class CreateNoteFragment extends Fragment {
                 year, month, day);
         datePickerDialog.show();
     }
+
     // 8. Phương thức tạo ghi chú mới
     private void createNewNote() {
         // Lấy giá trị từ các trường nhập liệu
@@ -96,13 +107,13 @@ public class CreateNoteFragment extends Fragment {
         String date = tvDate.getText().toString().trim();
         String type = spin.getSelectedItem().toString();
         // 9. Kiểm tra thông tin
-        if(amount == 0){
+        if (amount == 0) {
             //10.1 Hiển thị thông báo "Vui lòng nhập lại"
             Toast.makeText(getContext(), "Vui lòng nhập số tiền", Toast.LENGTH_SHORT).show(); // Kiểm tra người dùng nhập số tiền chưa
             return; // Dừng lại nếu trường số tiền trống
         }
 //        if (spin.getSelectedItemPosition() == 0) { // Kiểm tra xem người dùng đã chọn hạng mục chưa
-              //10.1 Hiển thị thông báo "Vui lòng nhập lại"
+        //10.1 Hiển thị thông báo "Vui lòng nhập lại"
 //            Toast.makeText(getContext(), "Vui lòng chọn hạng mục", Toast.LENGTH_SHORT).show();
 //            return; // Dừng lại nếu chưa chọn hạng mục
 //        }
@@ -136,4 +147,4 @@ public class CreateNoteFragment extends Fragment {
         }
 
     }
-    }
+}
