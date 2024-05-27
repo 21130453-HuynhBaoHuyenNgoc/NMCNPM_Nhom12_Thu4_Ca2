@@ -1,24 +1,22 @@
 package com.example.myapplication;
 
-import android.os.Bundle;
-
 import android.database.sqlite.SQLiteDatabase;
-import com.example.myapplication.dao.DatabaseHelper;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.MenuItem;
+import com.example.myapplication.dao.DatabaseHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     CreateNoteFragment createNoteFragment;
     DatabaseHelper dbHelper;
-
-    //Khai bao BarChartFragment de chuyen Fragment
+    //tao doi tuong FinancialOverViewFragment
     FinancialOverviewFragment financialOverviewFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
