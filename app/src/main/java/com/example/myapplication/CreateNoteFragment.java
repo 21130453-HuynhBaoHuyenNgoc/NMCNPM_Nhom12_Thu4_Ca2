@@ -4,10 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +15,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.dao.DatabaseHelper;
 
@@ -93,12 +91,12 @@ public class CreateNoteFragment extends Fragment {
     // 8. Phương thức tạo ghi chú mới
     private void createNewNote() {
         // Lấy giá trị từ các trường nhập liệu
-        String amount = etAmount.getText().toString().trim();
+        int amount = Integer.parseInt(etAmount.getText().toString().trim());
         String description = etDescription.getText().toString().trim();
         String date = tvDate.getText().toString().trim();
-        String type = spin.getSelectedItem().toString().equals("Thu tiền") ? "chi tiền" : "thu";
+        String type = spin.getSelectedItem().toString();
         // 9. Kiểm tra thông tin
-        if(TextUtils.isEmpty(amount)){
+        if(amount == 0){
             //10.1 Hiển thị thông báo "Vui lòng nhập lại"
             Toast.makeText(getContext(), "Vui lòng nhập số tiền", Toast.LENGTH_SHORT).show(); // Kiểm tra người dùng nhập số tiền chưa
             return; // Dừng lại nếu trường số tiền trống
@@ -111,7 +109,7 @@ public class CreateNoteFragment extends Fragment {
         // 10. Mở kết nối cơ sở dữ liệu để ghi dữ liệu
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.COLUMN_AMOUNT, Double.parseDouble(amount));
+        values.put(DatabaseHelper.COLUMN_AMOUNT, amount);
         values.put(DatabaseHelper.COLUMN_TYPE, type);
         values.put(DatabaseHelper.COLUMN_CATEGORY, type); // Assuming category is same as type here
         values.put(DatabaseHelper.COLUMN_DESCRIPTION, description);
