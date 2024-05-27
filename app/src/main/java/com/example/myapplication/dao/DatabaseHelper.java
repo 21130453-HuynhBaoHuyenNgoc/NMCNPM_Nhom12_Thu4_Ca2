@@ -18,7 +18,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DATE = "date";
 
     // Tên bảng và các cột trong bảng category
-
+    public static final String TABLE_CATEGORY = "create_new_category";
+    public static final String COLUMN_CATEGORYID = "categoryId";
+    public static final String COLUMN_CATEGORYNAME = "categoryName";
+    public static final String COLUMN_CATEGORYDESCRIPTION = "categoryDescription";
+    public static final String COLUMN_CATEGORYTYPE = "categoryType";
+    public static final String COLUMN_FATHERCATEGORY = "fatherCategory.getCategoryName()";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -30,13 +35,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createNoteTableQuery = "CREATE TABLE " + TABLE_CREATE_NOTE + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_AMOUNT + " REAL, " +
-                COLUMN_TYPE + " TEXT," +
+                COLUMN_CATEGORYDESCRIPTION + " TEXT," +
                 COLUMN_CATEGORY + " TEXT, " +
                 COLUMN_DESCRIPTION + " TEXT, " +
                 COLUMN_DATE + " TEXT);";
         db.execSQL(createNoteTableQuery);
         Log.d("DatabaseHelper", "onCreate() called");
-        // Ta bảng category
+        // Tao bảng category
+//        String createCategoryTableQuery = "CREATE TABLE " + TABLE_CATEGORY + "(" +
+//                COLUMN_CATEGORYID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//                COLUMN_CATEGORYNAME + " TEXT, " +
+//                COLUMN_CATEGORYDESCRIPTION + " TEXT, " +
+//                COLUMN_CATEGORYTYPE + " TEXT, " +
+//                COLUMN_FATHERCATEGORY + " TEXT);";
+//        db.execSQL(createNoteTableQuery);
+//        Log.d("DatabaseHelper", "onCreate() called");
     }
 
     @Override
