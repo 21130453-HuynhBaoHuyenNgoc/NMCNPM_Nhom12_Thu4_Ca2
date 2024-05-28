@@ -20,9 +20,30 @@ public class Category {
         this.fatherCategory = fatherCategory;
     }
 
+    public static List<Category> getExpenseCategory() {
+        List<Category> categories = getCategoryList();
+        List<Category> expenseCategory = new ArrayList<>();
+        for (Category cat : categories) {
+            if(cat.getCategoryType().equalsIgnoreCase("Chi")){
+                expenseCategory.add(cat);
+            }
+        }
+        return expenseCategory;
+    }
+
+    public static List<Category> getIncomeCategory() {
+        List<Category> categories = getCategoryList();
+        List<Category> incomeCategories = new ArrayList<>();
+        for (Category cat : categories) {
+            if(cat.getCategoryType().equalsIgnoreCase("Thu")){
+                incomeCategories.add(cat);
+            }
+        }
+        return incomeCategories;
+    }
+
     //tạo 1 bảng chứa các hạng mục
-    public static List<String> getCategoryList() {
-//    public static List<Category> getCategoryList() {
+    public static List<Category> getCategoryList() {
         List<Category> categoryList = new ArrayList<>();
 
         Category cat1 = new Category(1, "Auto & Transport", "", "Chi", null);
@@ -116,17 +137,13 @@ public class Category {
         categoryList.add(cat38);
         categoryList.add(cat39);
 
-//        return categoryList;
-
-        List<String> nameList = new ArrayList<>();
-
-        for (Category cat : categoryList) {
-            nameList.add(cat.getCategoryName());
-        }
-
-        return nameList;
+        return categoryList;
     }
 
+    @Override
+    public String toString() {
+        return categoryName;
+    }
 
     public int getCategoryId() {
         return categoryId;
