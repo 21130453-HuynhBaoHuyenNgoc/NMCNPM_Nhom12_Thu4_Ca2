@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, createNoteFragment).commit();
                 }
                 //nêú itemId = menuChart thì chuyen qua fragment cua barchart
-                else if (item.getItemId() == R.id.menu_chart) {
+                else if (item.getItemId() == R.id.menu_thuchi) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, financialOverviewFragment).commit();
                 }
                 else if (item.getItemId() == R.id.fragment_category) {

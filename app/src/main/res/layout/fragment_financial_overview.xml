@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="45dp"
-        android:text="Tổng Quan"
+        android:text="Tình hình thu chi"
+        android:textStyle="bold"
         android:gravity="center"
         android:background="@color/blue"
         android:textColor="@color/white"/>
@@ -33,17 +34,17 @@
             android:textSize="25dp"
             android:layout_marginLeft="10dp"
             android:text=""/>
-       <Button
-           android:id="@+id/btt_rep_start"
-           android:layout_width="0dp"
-           android:layout_weight="1"
-           android:layout_height="wrap_content"
-           android:background="@drawable/square_shape"
-           app:backgroundTint="@null"
-           android:textSize="20dp"
-           android:layout_marginLeft="45dp"
-           android:layout_marginRight="25dp"
-           android:text="Chọn ngày"/>
+        <Button
+            android:id="@+id/btt_rep_start"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/date_select"
+            app:backgroundTint="@null"
+            android:textSize="20dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="25dp"
+            android:text="Chọn ngày"/>
     </LinearLayout>
 
     <!-- Thoi gian ket thuc-->
@@ -67,7 +68,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:background="@drawable/square_shape"
+            android:background="@drawable/date_select"
             app:backgroundTint="@null"
             android:layout_marginLeft="45dp"
             android:layout_marginRight="25dp"
@@ -75,36 +76,39 @@
             android:text="Chọn ngày"/>
     </LinearLayout>
 
-    <!-- Xem tinh hinh chi tieu-->
-   <!-- <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/square_shape"
-        app:backgroundTint="@null"
-        android:layout_marginTop="60dp"
-        android:text="Xem"/>-->
-
     <!-- Tong tien thu -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="90dp">
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tổng thu"
-            android:textSize="40dp"
-            android:layout_marginLeft="25dp"/>
+            android:text="Mức thu"
+            android:textSize="28dp"
+            android:textColor="@color/black"
+
+            />
+        <View
+            android:id="@+id/mucthu"
+            android:layout_width="320dp"
+            android:layout_height="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/view_1"
+            />
         <EditText
             android:id="@+id/edit_tienthu"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:hint="vnd"
-            android:textSize="40dp"
-            android:layout_marginLeft="40dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="@color/black"
             android:text=""/>
     </LinearLayout>
 
@@ -112,23 +116,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tổng chi"
-            android:textSize="40dp"
-            android:layout_marginLeft="25dp"/>
+            android:text="Mức chi"
+            android:textSize="28dp"
+            android:textColor="@color/black"
+
+            />
+        <View
+            android:id="@+id/mucchi"
+            android:layout_width="320dp"
+            android:layout_height="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/view_2"
+            />
         <EditText
             android:id="@+id/edit_tienchi"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:hint="vnd"
-            android:textSize="40dp"
-            android:layout_marginLeft="40dp"
-            android:text=""/>
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.dao.DatabaseHelper;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -143,7 +144,7 @@ public class FinancialOverviewFragment extends Fragment {
             cursorThu.close();
 
             // setText cho edit_thu
-            edit_tienthu.setText(String.valueOf(totalThu));
+            edit_tienthu.setText(addCommas(String.valueOf(totalThu)));
 
         } catch (Exception e) {
             Toast.makeText(getContext(), "Định dạng ngày không hợp lệ", Toast.LENGTH_LONG).show();
@@ -176,10 +177,10 @@ public class FinancialOverviewFragment extends Fragment {
             SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
             // truy van tong thu
-            String sqlThu = "SELECT SUM(" + DatabaseHelper.COLUMN_AMOUNT + ") FROM " + DatabaseHelper.TABLE_CREATE_NOTE +
+            String sqlChi = "SELECT SUM(" + DatabaseHelper.COLUMN_AMOUNT + ") FROM " + DatabaseHelper.TABLE_CREATE_NOTE +
                     " WHERE " + DatabaseHelper.COLUMN_TYPE + " = ? AND " + DatabaseHelper.COLUMN_DATE + " BETWEEN ? AND ?";
             // Dung Cursor
-            Cursor cursorChi = db.rawQuery(sqlThu, new String[]{"Chi tiền", startDate, endDate});
+            Cursor cursorChi = db.rawQuery(sqlChi, new String[]{"Chi tiền", startDate, endDate});
             int totalChi = 0;
 
             // di chuyen con tro den vi tri dau tien trong hang
@@ -189,11 +190,20 @@ public class FinancialOverviewFragment extends Fragment {
             }
             cursorChi.close();
 
-            // setText cho edit_thuí
-            edit_tienchi.setText(String.valueOf(totalChi));
+            // setText cho edit_thu
+            edit_tienchi.setText(addCommas(String.valueOf(totalChi)));
 
         } catch (Exception e) {
             Toast.makeText(getContext(), "Định dạng ngày không hợp lệ", Toast.LENGTH_LONG).show();
         }
+    }
+    //doi dinh dang tien them dau phay vao
+    public static String addCommas(String number) {
+        // Chuyển chuỗi thành số nguyên
+        long num = Long.parseLong(number);
+
+        // Định dạng số với dấu phẩy phân cách hàng nghìn
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(num);
     }
 }
