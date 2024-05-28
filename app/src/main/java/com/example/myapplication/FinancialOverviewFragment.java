@@ -37,8 +37,8 @@ public class FinancialOverviewFragment extends Fragment {
         // tham chieu den cac budget trong layout
         edit_startDate = view.findViewById(R.id.edit_rep_start);
         edit_endDate = view.findViewById(R.id.edit_rep_end);
-        btt_StartDate = view.findViewById(R.id.btt_rep_start);
-        btt_endDate = view.findViewById(R.id.btt_rep_end);
+//        btt_StartDate = view.findViewById(R.id.btt_rep_start);
+//        btt_endDate = view.findViewById(R.id.btt_rep_end);
         edit_tienthu = view.findViewById(R.id.edit_tienthu);
         edit_tienchi = view.findViewById(R.id.edit_tienchi);
 

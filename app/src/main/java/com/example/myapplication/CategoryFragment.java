@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,7 +33,20 @@ public class CategoryFragment extends Fragment {
     ArrayAdapter<Category> incomeArrayAdapter;
     List<Category> incomeCategory = Category.getIncomeCategory();
 
+    private OnCategorySelectedListener callback;
 
+    public interface OnCategorySelectedListener {
+        void onCategorySelected(Category category);
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            callback = (OnCategorySelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement OnCategorySelectedListener");
+        }
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
@@ -106,6 +120,7 @@ public class CategoryFragment extends Fragment {
 
     private void handleCategorySelection(Category category) {
         Toast.makeText(getActivity(), "Selected: " + category.getCategoryName(), Toast.LENGTH_SHORT).show();
+        callback.onCategorySelected(category);
 
     }
 

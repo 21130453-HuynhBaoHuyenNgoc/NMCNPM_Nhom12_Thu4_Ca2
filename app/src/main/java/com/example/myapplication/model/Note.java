@@ -2,9 +2,7 @@ package com.example.myapplication.model;
 
 public class Note {
     private String id;
-    private String idUser;
     private double amount;
-    private double availableAmount;
     private String type;
     private String date;
     private String description;
@@ -17,28 +15,12 @@ public class Note {
         this.id = id;
     }
 
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
-    }
-
     public double getAmount() {
         return amount;
     }
 
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    public double getAvailableAmount() {
-        return availableAmount;
-    }
-
-    public void setAvailableAmount(double availableAmount) {
-        this.availableAmount = availableAmount;
     }
 
     public String getType() {

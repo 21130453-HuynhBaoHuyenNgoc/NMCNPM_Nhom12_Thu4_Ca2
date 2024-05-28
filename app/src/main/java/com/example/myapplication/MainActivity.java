@@ -8,10 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.dao.DatabaseHelper;
+import com.example.myapplication.model.Category;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CategoryFragment.OnCategorySelectedListener {
 
     BottomNavigationView bottomNavigationView;
     CreateNoteFragment createNoteFragment;
@@ -50,5 +51,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onCategorySelected(Category category) {
+        // Chuyển tiếp callback tới fragment CreateNoteFragment
+        CreateNoteFragment createNoteFragment = (CreateNoteFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout);
+        if (createNoteFragment != null) {
+            createNoteFragment.onCategorySelected(category);
+        }
+
+        // Quay lại fragment CreateNoteFragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, createNoteFragment).commit();
     }
 }

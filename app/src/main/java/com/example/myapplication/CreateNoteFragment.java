@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.myapplication.dao.DatabaseHelper;
+import com.example.myapplication.model.Category;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,7 +32,7 @@ import java.util.Locale;
 // * Use the {@link CreateNoteFragment#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class CreateNoteFragment extends Fragment {
+public class CreateNoteFragment extends Fragment implements CategoryFragment.OnCategorySelectedListener{
     private EditText etAmount, etDescription;
     private Button btnSelectDate, btnSave, btnSelectCategory;
     private TextView tvDate;
@@ -146,5 +147,15 @@ public class CreateNoteFragment extends Fragment {
 
         }
 
+    }
+
+    @Override
+    public void onCategorySelected(Category category) {
+        // Xử lý hạng mục đã chọn
+        Toast.makeText(getContext(), "Category selected: " + category.getCategoryName(), Toast.LENGTH_SHORT).show();
+        // Quay lại CreateNoteFragment
+        getParentFragmentManager().popBackStack();
+        // Cập nhật UI hoặc lưu trữ giá trị hạng mục đã chọn
+        btnSelectCategory.setText(category.getCategoryName());
     }
 }
