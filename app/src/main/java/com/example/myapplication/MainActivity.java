@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
                 if(item.getItemId() == R.id.menu_add) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, createNoteFragment).commit();
                 }
-                //nêú itemId = menuChart thì chuyen qua fragment cua barchart
+                //nêú itemId = menuChart thì chuyen qua fragment cua thu chi
                 else if (item.getItemId() == R.id.menu_thuchi) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, financialOverviewFragment).commit();
                 }
