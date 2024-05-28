@@ -3,6 +3,7 @@ package com.example.myapplication.model;
 public class Note {
     private String id;
     private int amount;
+    private Category category;
     private String type;
     private String date;
     private String description;
@@ -15,12 +16,20 @@ public class Note {
         this.id = id;
     }
 
-    public double getAmount() {
+    public int getAmount() {
         return amount;
     }
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getType() {

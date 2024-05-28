@@ -125,7 +125,7 @@ public class CreateNoteFragment extends Fragment implements CategoryFragment.OnC
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_AMOUNT, amount);
         values.put(DatabaseHelper.COLUMN_TYPE, type);
-        values.put(DatabaseHelper.COLUMN_CATEGORY, type); // Assuming category is same as type here
+        values.put(DatabaseHelper.COLUMN_CATEGORY, selectedCategory);
         values.put(DatabaseHelper.COLUMN_DESCRIPTION, description);
         values.put(DatabaseHelper.COLUMN_DATE, date);
 
@@ -135,6 +135,7 @@ public class CreateNoteFragment extends Fragment implements CategoryFragment.OnC
         } else {
             Log.d("CreateNoteFragment", "Dữ liệu mới đã được lưu: ID = " + newRowId);
             Log.d("CreateNoteFragment", "Số tiền: " + amount);
+            Log.d("CreateNoteFragment", "Hạng mục: " + selectedCategory);
             Log.d("CreateNoteFragment", "Loại: " + type);
             Log.d("CreateNoteFragment", "Mô tả: " + description);
             Log.d("CreateNoteFragment", "Ngày: " + date);
