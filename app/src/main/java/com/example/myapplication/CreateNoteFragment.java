@@ -103,21 +103,23 @@ public class CreateNoteFragment extends Fragment implements CategoryFragment.OnC
     // 8. Phương thức tạo ghi chú mới
     private void createNewNote() {
         // Lấy giá trị từ các trường nhập liệu
-        int amount = Integer.parseInt(etAmount.getText().toString().trim());
+        String amountText = etAmount.getText().toString().trim();
+        int amount = Integer.parseInt(amountText);
         String description = etDescription.getText().toString().trim();
         String date = tvDate.getText().toString().trim();
         String type = spin.getSelectedItem().toString();
         // 9. Kiểm tra thông tin
-        if (amount == 0) {
+        if (amountText.isEmpty()) {
             //10.1 Hiển thị thông báo "Vui lòng nhập lại"
             Toast.makeText(getContext(), "Vui lòng nhập số tiền", Toast.LENGTH_SHORT).show(); // Kiểm tra người dùng nhập số tiền chưa
             return; // Dừng lại nếu trường số tiền trống
         }
-//        if (spin.getSelectedItemPosition() == 0) { // Kiểm tra xem người dùng đã chọn hạng mục chưa
-        //10.1 Hiển thị thông báo "Vui lòng nhập lại"
-//            Toast.makeText(getContext(), "Vui lòng chọn hạng mục", Toast.LENGTH_SHORT).show();
-//            return; // Dừng lại nếu chưa chọn hạng mục
-//        }
+        String selectedCategory = btnSelectCategory.getText().toString();
+        if (selectedCategory.equals("Chọn hạng mục")) { // Kiểm tra xem người dùng đã chọn hạng mục chưa
+            // 10.1 Hiển thị thông báo "Vui lòng nhập lại"
+            Toast.makeText(getContext(), "Vui lòng chọn hạng mục", Toast.LENGTH_SHORT).show();
+            return; // Dừng lại nếu chưa chọn hạng mục
+        }
         // 10. Mở kết nối cơ sở dữ liệu để ghi dữ liệu
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -144,6 +146,7 @@ public class CreateNoteFragment extends Fragment implements CategoryFragment.OnC
             // Đặt lại giá trị mặc định cho ngày và loại
             tvDate.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
             spin.setSelection(0); // Chọn lại mục đầu tiên trong Spinner (Thu tiền)
+            btnSelectCategory.setText("Chọn hạng mục");
 
         }
 

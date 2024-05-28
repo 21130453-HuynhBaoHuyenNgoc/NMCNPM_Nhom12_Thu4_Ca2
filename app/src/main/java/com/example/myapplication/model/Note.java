@@ -2,7 +2,7 @@ package com.example.myapplication.model;
 
 public class Note {
     private String id;
-    private double amount;
+    private int amount;
     private String type;
     private String date;
     private String description;
@@ -19,7 +19,7 @@ public class Note {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
