@@ -116,6 +116,8 @@ public class Category {
         categoryList.add(cat38);
         categoryList.add(cat39);
 
+//        return categoryList;
+
         List<String> nameList = new ArrayList<>();
 
         for (Category cat : categoryList) {
@@ -123,7 +125,6 @@ public class Category {
         }
 
         return nameList;
-//        return categoryList;
     }
 
 
