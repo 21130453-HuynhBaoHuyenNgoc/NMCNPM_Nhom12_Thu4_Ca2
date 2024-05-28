@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper dbHelper;
     //tao doi tuong FinancialOverViewFragment
     FinancialOverviewFragment financialOverviewFragment;
+
+    CategoryFragment categoryFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         createNoteFragment = new CreateNoteFragment();
         //tao doi tuong barChartFragment
         financialOverviewFragment = new FinancialOverviewFragment();
+        categoryFragment = new CategoryFragment();
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -39,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 //nêú itemId = menuChart thì chuyen qua fragment cua barchart
                 else if (item.getItemId() == R.id.menu_chart) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, financialOverviewFragment).commit();
+                }
+                else if (item.getItemId() == R.id.fragment_category) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, categoryFragment).commit();
                 }
                 return true;
             }
