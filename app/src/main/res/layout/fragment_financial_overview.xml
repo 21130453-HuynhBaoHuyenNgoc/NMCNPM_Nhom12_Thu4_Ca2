@@ -44,7 +44,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="45dp"
             android:layout_marginRight="25dp"
-            android:text="Chọn ngày"/>
+            android:text="Từ ngày"/>
     </LinearLayout>
 
     <!-- Thoi gian ket thuc-->
@@ -73,7 +73,7 @@
             android:layout_marginLeft="45dp"
             android:layout_marginRight="25dp"
             android:textSize="20dp"
-            android:text="Chọn ngày"/>
+            android:text="Đến ngày"/>
     </LinearLayout>
 
     <!-- Tong tien thu -->
